@@ -1,9 +1,15 @@
-from Bentuk_Bidang.ellips import draw_ellipse
-from Bentuk_Bidang.lingkaran import draw_circle
+from Bentuk_Bidang.bentuk_dasar import BentukDasar
+from Bentuk_Bidang.ellips import Ellips
+from Bentuk_Bidang.lingkaran import Lingkaran
 
-class Telur:
+class Telur(BentukDasar):
     def __init__(self, x, y, tm=None):
-        self.x = x
-        self.y = y
-        self.telur = draw_ellipse(x, y, 5, 7)
-        self.embrio = draw_circle(x, y, 2)
+        super().__init__(x, y, tm)
+        self.telur = Ellips(x, y, 5, 7)
+        self.embrio = Lingkaran(x, y, 2)
+        
+    def draw(self):
+        super().draw(
+            self.telur,
+            self.embrio
+        )

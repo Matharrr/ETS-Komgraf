@@ -1,19 +1,12 @@
-import primitif.line
-import py5
+from Bentuk_Bidang.bentuk_dasar import BentukDasar
+from primitif.basic import segitiga_sama_kaki
 
-class SegitigaSamaSisi:
-    def __init__(self, x, y, sisi):
-        self.x = x
-        self.y = y
+class SegitigaSamaSisi(BentukDasar):
+    def __init__(self, x, y, sisi, tm=None):
+        super().__init__(x, y, tm)
         self.sisi = sisi
-        self.points = self.segitiga_sama_sisi(x, y, sisi)
-        
-    def segitiga_sama_sisi(self, x, y, sisi):
-        res = primitif.line.line_dda(x, y, x+sisi, y)
-        res += primitif.line.line_dda(x+sisi, y, x, y+sisi)
-        res += primitif.line.line_dda(x, y+sisi, x, y)
-        return res
-
+    
     def draw(self):
-        for point in self.points:
-            py5.point(*point)
+        super().draw(
+            segitiga_sama_kaki(self.x, self.y, self.sisi, self.sisi),
+        )
